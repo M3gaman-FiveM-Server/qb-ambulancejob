@@ -5,10 +5,10 @@ Config.DocCooldown = 1                                       -- Cooldown between
 Config.WipeInventoryOnRespawn = true                         -- Enable or disable removing all the players items when they respawn at the hospital
 Config.RespawnAtNearestHospital = true                       -- Enable or disable respawning at the closest hospital
 Config.Helicopter = 'polmav'                                 -- Helicopter model that players with the ambulance job can use
-Config.BillCost = 2000                                       -- Price that players are charged for using the hospital check-in system
-Config.DeathTime = 300                                       -- How long the timer is for players to bleed out completely and respawn at the hospital
+Config.BillCost = 1000                                       -- Price that players are charged for using the hospital check-in system
+Config.DeathTime = 120                                       -- How long the timer is for players to bleed out completely and respawn at the hospital
 Config.ReviveInterval = 360                                  -- How long the timer is for players to revive a player in laststand
-Config.MinimumRevive = 300                                   -- How long the timer is for players to revive a player in laststand
+Config.MinimumRevive = 120                                   -- How long the timer is for players to revive a player in laststand
 Config.PainkillerInterval = 60                               -- Set the length of time painkillers last (per one)
 Config.HealthDamage = 5                                      -- Minumum damage done to health before checking for injuries
 Config.ArmorDamage = 5                                       -- Minumum damage done to armor before checking for injuries
@@ -38,20 +38,31 @@ Config.AlertShowInfo = 2            -- How many injuries a player must have befo
 
 Config.Locations = {                -- Edit the various interaction points for players or create new ones
     ['checking'] = {
-        vector3(308.19, -595.35, 43.29),
-        vector3(-254.54, 6331.78, 32.43), -- paleto
+        vector3(308.19, -595.35, 43.29), -- city
+        vector3(1828.59, 3684.88, 34.28),  -- sandy
+        vector3(-253.29, 6330.03, 32.43), -- paleto
+        vector3(-176.12, 406.25, 110.77), -- city secret
+        vector3(576.53, 2662.53, 42.0), -- sandy secret
+        vector3(2815.08, 5980.24, 350.93), -- paleto secret
+        vector3(5054.58, -5091.66, 5.57), -- cayo perico secret
     },
     ['duty'] = {
-        vector3(311.18, -599.25, 43.29),
-        vector3(-254.88, 6324.5, 32.58), -- paleto
+        vector3(311.18, -599.25, 43.29), -- city
+        vector3(1826.71, 3688.39, 34.13), -- sandy
+        vector3(-255.54, 6330.34, 32.43), -- paleto
+        vector3(4487.66, -4512.74, 4.16), -- cayo perico
     },
     ['vehicle'] = {
-        vector4(294.578, -574.761, 43.179, 35.79),
-        vector4(-234.28, 6329.16, 32.15, 222.5), -- paleto
+        vector4(294.578, -574.761, 43.179, 35.79), -- city
+        vector4(1819.11, 3655.35, 34.13, 206.9), -- sandy
+        vector4(-257.48, 6338.36, 32.43, 135.23), -- paleto
+        vector4(4480.38, -4521.41, 4.2, 17.09), -- cayo perico
     },
     ['helicopter'] = {
-        vector4(351.58, -587.45, 74.16, 160.5),
-        vector4(-475.43, 5988.353, 31.716, 31.34), -- paleto
+        vector4(351.58, -587.45, 74.16, 160.5), -- city
+        vector4(1806.47, 3667.39, 34.32, 207.35), -- sandy
+        vector4(-276.3, 6328.79, 32.81, 137.43), -- paleto
+        vector4(4464.32, -4547.63, 5.46, 1.53), -- cayo perico
     },
     ['roof'] = {
         vector4(338.5, -583.85, 74.16, 245.5),
@@ -60,7 +71,10 @@ Config.Locations = {                -- Edit the various interaction points for p
         vector3(298.74, -599.33, 43.29),
     },
     ['stash'] = {
-        vector3(309.78, -596.6, 43.29),
+        vector3(309.78, -596.6, 43.29), -- city
+        vector3(1835.28, 3693.98, 34.56), -- sandy
+        vector3(-258.29, 6332.45, 32.24), -- paleto
+        vector3(4487.13, -4511.02, 4.18), -- paleto
     },
     ['beds'] = {
         { coords = vector4(353.1, -584.6, 43.11, 152.08),    taken = false, model = 1631638868 },
@@ -71,10 +85,31 @@ Config.Locations = {                -- Edit the various interaction points for p
         { coords = vector4(360.32, -587.19, 43.02, 152.08),  taken = false, model = -1091386327 },
         { coords = vector4(349.82, -583.33, 43.02, 152.08),  taken = false, model = -1091386327 },
         { coords = vector4(326.98, -576.17, 43.02, 152.08),  taken = false, model = -1091386327 },
+        --- sandy
+        { coords = vector4(1825.65, 3676.5, 34.21, 221.42), taken = false, model = 2117668672 },
+        { coords = vector4(1829.47, 3670.12, 34.21, 27.44), taken = false, model = 2117668672 },
+        { coords = vector4(1826.36, 3668.5, 34.21, 25.06), taken = false, model = 2117668672 },
+        { coords = vector4(1823.48, 3666.95, 34.21, 22.94), taken = false, model = 2117668672 },
+        { coords = vector4(1819.46, 3673.25, 34.21, 225.08), taken = false, model = 2117668672 },
         --- paleto
-        { coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672 },
-        { coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672 },
-        { coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672 },
+        { coords = vector4(-247.3, 6317.87, 32.34, 144.19), taken = false, model = 2117668672 },
+        { coords = vector4(-245.39, 6316.19, 32.34, 133.7), taken = false, model = 2117668672 },
+        { coords = vector4(-251.05, 6310.36, 32.34, 313.23), taken = false, model = 2117668672 },
+        { coords = vector4(-252.62, 6312.02, 32.34, 313.49), taken = false, model = 2117668672 },
+        { coords = vector4(-254.29, 6313.72, 32.34, 301.13), taken = false, model = 2117668672 },
+        { coords = vector4(-256.13, 6315.55, 32.34, 320.16), taken = false, model = 2117668672 },
+        { coords = vector4(-252.15, 6323.23, 32.34, 136.84), taken = false, model = 2117668672 },
+        --- Cayo Perico
+        { coords = vector4(4491.65, -4510.16, 4.37, 114.3), taken = false, model = 794936718 },
+        --- city secret
+        { coords = vector4(-184.26, 415.23, 110.69, 294.83), taken = false, model = 2117668672 },
+        --- sandy secret
+        { coords = vector4(583.22, 2668.51, 41.96, 102.52), taken = false, model = 2117668672 },
+        { coords = vector4(584.07, 2663.98, 41.96, 98.15), taken = false, model = 2117668672 },
+        --- paleto secret
+        { coords = vector4(2811.6, 5975.34, 351.81, 37.21), taken = false, model = 2117668672 },
+        --- cayo perico secret
+        { coords = vector4(5051.01, -5096.36, 5.45, 48.38), taken = false, model = 2117668672 },
     },
     ['jailbeds'] = {
         { coords = vector4(1761.96, 2597.74, 45.66, 270.14), taken = false, model = 2117668672 },
@@ -98,17 +133,71 @@ Config.Locations = {                -- Edit the various interaction points for p
             },
         },
         {
+            ['name'] = Lang:t('info.sd_hospital'),
+            ['location'] = vector3(1831.33, 3683.66, 34.28),
+            ['beds'] = {
+                {coords = vector4(1825.65, 3676.5, 34.21, 221.42), taken = false, model = 1631638868},
+                {coords = vector4(1829.47, 3670.12, 34.21, 27.44), taken = false, model = 1631638868},
+                {coords = vector4(1826.36, 3668.5, 34.21, 25.06), taken = false, model = 2117668672},
+                {coords = vector4(1823.48, 3666.95, 34.21, 22.94), taken = false, model = 2117668672},
+                {coords = vector4(1819.46, 3673.25, 34.21, 225.08), taken = false, model = 2117668672},
+            },
+        },
+        {
             ['name'] = Lang:t('info.paleto_hospital'),
             ['location'] = vector3(-254.54, 6331.78, 32.43),
             ['beds'] = {
-                { coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672 },
-                { coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672 },
-                { coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672 },
+                {coords = vector4(-247.3, 6317.87, 32.34, 144.19), taken = false, model = 2117668672},
+                {coords = vector4(-245.39, 6316.19, 32.34, 133.7), taken = false, model = 2117668672},
+                {coords = vector4(-251.05, 6310.36, 32.34, 313.23), taken = false, model = 2117668672},
+                {coords = vector4(-252.62, 6312.02, 32.34, 313.49), taken = false, model = 2117668672},
+                {coords = vector4(-254.29, 6313.72, 32.34, 301.13), taken = false, model = 2117668672},
+                {coords = vector4(-256.13, 6315.55, 32.34, 320.16), taken = false, model = 2117668672},
+                {coords = vector4(-252.15, 6323.23, 32.34, 136.84), taken = false, model = 2117668672},
+            },
+        },
+        {
+            ['name'] = Lang:t('info.cayoperico_hospital'),
+            ['location'] = vector3(4490.97, -4509.43, 4.18),
+            ['beds'] = {
+                [1] = {coords = vector4(4491.65, -4510.16, 4.37, 114.3), taken = false, model = 794936718},
+            },
+        },
+        {
+            ['name'] = Lang:t('info.sc1_hospital'),
+            ['location'] = vector3(-176.12, 406.25, 110.77),
+            ['beds'] = {
+                [1] = {coords = vector4(-184.26, 415.23, 110.69, 294.83), taken = false, model = 1631638868},
+            },
+        },
+        {
+            ['name'] = Lang:t('info.sc2_hospital'),
+            ['location'] = vector3(576.53, 2662.53, 42.0),
+            ['beds'] = {
+                [1] = {coords = vector4(583.22, 2668.51, 41.96, 102.52), taken = false, model = 1631638868},
+                [2] = {coords = vector4(584.07, 2663.98, 41.96, 98.15), taken = false, model = 1631638868},
+            },
+        },
+        {
+            ['name'] = Lang:t('info.sc3_hospital'),
+            ['location'] = vector4(2811.6, 5975.34, 351.81, 37.21),
+            ['beds'] = {
+                [1] = {coords = vector4(1825.65, 3676.5, 34.21, 221.42), taken = false, model = 1631638868},
+            },
+        },
+        {
+            ['name'] = Lang:t('info.sc4_hospital'),
+            ['location'] = vector3(5054.58, -5091.66, 5.57),
+            ['beds'] = {
+                [1] = {coords = vector4(5051.01, -5096.36, 5.45, 48.38), taken = false, model = 1631638868},
             },
         },
     },
     ['stations'] = {
-        { label = Lang:t('info.pb_hospital'), coords = vector3(304.27, -600.33, 43.28) }
+        { label = Lang:t('info.pb_hospital'), coords = vector3(304.27, -600.33, 43.28) },
+        { label = Lang:t('info.sd_hospital'), coords = vector3(1831.33, 3683.66, 34.28) },
+        { label = Lang:t('info.paleto_hospital'), coords = vector3(-253.39, 6328.47, 32.43) },
+        { label = Lang:t('info.cayoperico_hospital'), coords = vector3(4490.97, -4509.43, 4.18) }
     }
 }
 
